@@ -149,13 +149,12 @@ function parseTestResultsFromFile(
   filePath: string,
   content: string,
 ): TestResults {
-  // Check if file is .trx by extension or by XML content
-  const isTrxFile =
-    filePath.toLowerCase().endsWith(".trx") ||
-    content.trim().startsWith("<?xml") ||
-    content.includes("<TestRun");
+  // Check if file is .trx by extension or by XML content with TestRun element
+  const isTrxByExtension = filePath.toLowerCase().endsWith(".trx");
+  const isTrxByContent =
+    content.includes("<TestRun") && content.includes("TestResult");
 
-  if (isTrxFile) {
+  if (isTrxByExtension || isTrxByContent) {
     core.info("Detected TRX format, parsing as Visual Studio Test Results");
     return parseTrxResults(content);
   } else {

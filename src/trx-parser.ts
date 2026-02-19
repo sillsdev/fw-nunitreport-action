@@ -56,8 +56,8 @@ export function parseTrxResults(xmlContent: string): TestResults {
     }
   }
 
-  // Group results by storage (DLL)
-  const resultsByFixture = new Map<string, TestResult>();
+  // Group results by storage (DLL/assembly name)
+  const resultsByStorage = new Map<string, TestResult>();
 
   const results = parsed.TestRun.Results?.UnitTestResult;
   if (results) {
@@ -67,8 +67,8 @@ export function parseTrxResults(xmlContent: string): TestResults {
       const testDef = testDefinitions.get(result["@_testId"]);
       const fixture = testDef?.["@_storage"] || "Unknown";
 
-      if (!resultsByFixture.has(fixture)) {
-        resultsByFixture.set(fixture, {
+      if (!resultsByStorage.has(fixture)) {
+        resultsByStorage.set(fixture, {
           fixture,
           failures: 0,
           ignored: 0,
@@ -77,7 +77,7 @@ export function parseTrxResults(xmlContent: string): TestResults {
         });
       }
 
-      const testResult = resultsByFixture.get(fixture);
+      const testResult = resultsByStorage.get(fixture);
       if (!testResult) {
         continue; // Skip if we somehow can't get the result
       }
@@ -106,15 +106,18 @@ export function parseTrxResults(xmlContent: string): TestResults {
           testResult.ignored++;
           break;
         default:
-          // Unknown outcome, treat as passed
-          testResult.passed++;
+          // Log warning for unknown outcomes and treat as ignored
+          console.warn(
+            `Unknown test outcome '${outcome}' for test '${result["@_testName"]}', treating as ignored`,
+          );
+          testResult.ignored++;
           break;
       }
     }
   }
 
   return {
-    results: Array.from(resultsByFixture.values()),
+    results: Array.from(resultsByStorage.values()),
   };
 }
 
