@@ -2,6 +2,7 @@ import * as core from "@actions/core";
 import * as fs from "fs";
 import * as github from "@actions/github";
 import parseTestResults, { TestResults } from "./test-results-parser";
+import parseTrxResults from "./trx-parser";
 
 /**
  * The main function for the action.
@@ -24,7 +25,8 @@ export async function run(): Promise<void> {
       // eslint-disable-next-line no-undef
       core.getInput("encoding") as BufferEncoding,
     );
-    const testResults = parseTestResults(testResultsText);
+    const logPath = core.getInput("log-path");
+    const testResults = parseTestResultsFromFile(logPath, testResultsText);
     console.debug(JSON.stringify(testResults));
     await octokit.rest.checks.update({
       check_run_id: createCheckResponse.data.id,
@@ -135,4 +137,29 @@ function trimWorkspaceDirFromPath(path: string): string {
   if (path.includes("\\Lib\\"))
     return path.substring(path.indexOf("\\Lib\\") + 1);
   return path;
+}
+
+/**
+ * Determines the file format and parses accordingly.
+ * @param filePath The path to the test results file
+ * @param content The content of the test results file
+ * @returns Parsed test results
+ */
+function parseTestResultsFromFile(
+  filePath: string,
+  content: string,
+): TestResults {
+  // Check if file is .trx by extension or by XML content
+  const isTrxFile =
+    filePath.toLowerCase().endsWith(".trx") ||
+    content.trim().startsWith("<?xml") ||
+    content.includes("<TestRun");
+
+  if (isTrxFile) {
+    core.info("Detected TRX format, parsing as Visual Studio Test Results");
+    return parseTrxResults(content);
+  } else {
+    core.info("Detected NUnit text format, parsing as NUnit report");
+    return parseTestResults(content);
+  }
 }

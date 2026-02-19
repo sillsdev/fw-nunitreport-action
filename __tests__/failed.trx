@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="12345678-1234-1234-1234-123456789012" name="Test Run" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Results>
+    <UnitTestResult executionId="abcd1234-1234-1234-1234-123456789001" testId="test-id-001" testName="Equals_ExactlyTheSame" computerName="COMPUTER" duration="00:00:00.1234567" startTime="2024-01-01T10:00:00.000Z" endTime="2024-01-01T10:00:00.123Z" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="abcd1234-1234-1234-1234-123456789001">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.AreEqual failed. Expected:&lt;5&gt;. Actual:&lt;3&gt;.</Message>
+          <StackTrace>   at FwUtilsTests.FwLinkArgsTests.Equals_ExactlyTheSame() in C:\Repositories\fwroot\fw\Src\Common\FwUtils\FwUtilsTests\FwLinkArgsTests.cs:line 30</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="abcd1234-1234-1234-1234-123456789002" testId="test-id-002" testName="Equals_SameObject" computerName="COMPUTER" duration="00:00:00.0234567" startTime="2024-01-01T10:00:01.000Z" endTime="2024-01-01T10:00:01.023Z" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="abcd1234-1234-1234-1234-123456789002">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.AreEqual failed. Expected:&lt;true&gt;. Actual:&lt;false&gt;.</Message>
+          <StackTrace>   at FwUtilsTests.FwLinkArgsTests.Equals_SameObject() in C:\Repositories\fwroot\fw\Src\Common\FwUtils\FwUtilsTests\FwLinkArgsTests.cs:line 43</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="Equals_ExactlyTheSame" storage="FwUtilsTests.dll" id="test-id-001">
+      <Execution id="abcd1234-1234-1234-1234-123456789001" />
+      <TestMethod codeBase="C:\Path\To\FwUtilsTests.dll" adapterTypeName="executor://mstestadapter/v2" className="FwUtilsTests.FwLinkArgsTests" name="Equals_ExactlyTheSame" />
+    </UnitTest>
+    <UnitTest name="Equals_SameObject" storage="FwUtilsTests.dll" id="test-id-002">
+      <Execution id="abcd1234-1234-1234-1234-123456789002" />
+      <TestMethod codeBase="C:\Path\To\FwUtilsTests.dll" adapterTypeName="executor://mstestadapter/v2" className="FwUtilsTests.FwLinkArgsTests" name="Equals_SameObject" />
+    </UnitTest>
+  </TestDefinitions>
+</TestRun>
