@@ -102,7 +102,7 @@ steps:
 
 ### TRX Format (Visual Studio Test Results)
 
-This action now supports reading Visual Studio Test Results (.trx) files. The
+This action also supports reading a .trx format file with the results. The
 format is automatically detected based on the file extension or content.
 
 ```yaml

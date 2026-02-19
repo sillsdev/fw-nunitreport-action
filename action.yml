@@ -11,7 +11,7 @@ branding:
 inputs:
   log-path:
     required: true
-    description: 'Path to test results file (NUnit text format or .trx format)'
+    description: 'Path to test results file ( NUnitReport text format or .trx format)'
   token:
     required: true
     description: 'GitHub token sufficient to run checks'
