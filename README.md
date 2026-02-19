@@ -87,6 +87,8 @@ To include the action in a workflow in another repository, you can use the
 `uses` syntax with the `@` symbol to reference a specific branch, tag, or commit
 hash.
 
+### NUnit Text Format
+
 ```yaml
 steps:
   - name: Report Results
@@ -96,6 +98,22 @@ steps:
       log-path: /path/to/nunitreporteroutput
       token: ${{ secrets.GITHUB_TOKEN }}
       encoding: utf-16le # optional tuning to match the output filetype for the runner
+```
+
+### TRX Format (Visual Studio Test Results)
+
+This action also supports reading a .trx format file with the results. The
+format is automatically detected based on the file extension or content.
+
+```yaml
+steps:
+  - name: Report Results
+    id: test-result-action
+    uses: sillsdev/fw-nunitreport-action@v1 # Commit with the `v1` tag
+    with:
+      log-path: /path/to/testresults.trx
+      token: ${{ secrets.GITHUB_TOKEN }}
+      encoding: utf-8 # TRX files are typically UTF-8 encoded
 ```
 
 ## Publishing a New Release

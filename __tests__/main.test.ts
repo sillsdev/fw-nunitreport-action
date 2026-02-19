@@ -83,6 +83,48 @@ describe("action", () => {
     expect(setFailedMock).not.toHaveBeenCalled();
     expect(errorMock).not.toHaveBeenCalled();
   });
+
+  it("parses TRX format successfully", async () => {
+    // Set the action's inputs as return values from core.getInput()
+    getInputMock.mockImplementation((name: string): string => {
+      switch (name) {
+        case "log-path":
+          return "./__tests__/sample.trx";
+        case "encoding":
+          return "utf-8";
+        default:
+          return "";
+      }
+    });
+
+    await main.run();
+    expect(runMock).toHaveReturned();
+
+    // Verify that all of the core library functions were called correctly
+    expect(setFailedMock).not.toHaveBeenCalled();
+    expect(errorMock).not.toHaveBeenCalled();
+  });
+
+  it("sets a failed status for TRX format with failures", async () => {
+    // Set the action's inputs as return values from core.getInput()
+    getInputMock.mockImplementation((name: string): string => {
+      switch (name) {
+        case "log-path":
+          return "./__tests__/failed.trx";
+        case "encoding":
+          return "utf-8";
+        default:
+          return "";
+      }
+    });
+
+    await main.run();
+    expect(runMock).toHaveReturned();
+
+    // Verify that all of the core library functions were called correctly
+    expect(setFailedMock).toHaveBeenNthCalledWith(1, "Some unit tests failed.");
+    expect(errorMock).not.toHaveBeenCalled();
+  });
 });
 
 describe("generate summaries", () => {

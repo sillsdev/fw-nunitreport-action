@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="12345678-1234-1234-1234-123456789012" name="Test Run" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Results>
+    <UnitTestResult executionId="abcd1234-1234-1234-1234-123456789001" testId="test-id-001" testName="TestMethod1" computerName="COMPUTER" duration="00:00:00.1234567" startTime="2024-01-01T10:00:00.000Z" endTime="2024-01-01T10:00:00.123Z" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="abcd1234-1234-1234-1234-123456789001" />
+    <UnitTestResult executionId="abcd1234-1234-1234-1234-123456789002" testId="test-id-002" testName="TestMethod2" computerName="COMPUTER" duration="00:00:00.0234567" startTime="2024-01-01T10:00:01.000Z" endTime="2024-01-01T10:00:01.023Z" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="abcd1234-1234-1234-1234-123456789002" />
+    <UnitTestResult executionId="abcd1234-1234-1234-1234-123456789003" testId="test-id-003" testName="TestMethod3" computerName="COMPUTER" duration="00:00:00.0134567" startTime="2024-01-01T10:00:02.000Z" endTime="2024-01-01T10:00:02.013Z" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="abcd1234-1234-1234-1234-123456789003" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="TestMethod1" storage="ITextDllTests.dll" id="test-id-001">
+      <Execution id="abcd1234-1234-1234-1234-123456789001" />
+      <TestMethod codeBase="C:\Path\To\ITextDllTests.dll" adapterTypeName="executor://mstestadapter/v2" className="ITextDllTests.TestClass" name="TestMethod1" />
+    </UnitTest>
+    <UnitTest name="TestMethod2" storage="ITextDllTests.dll" id="test-id-002">
+      <Execution id="abcd1234-1234-1234-1234-123456789002" />
+      <TestMethod codeBase="C:\Path\To\ITextDllTests.dll" adapterTypeName="executor://mstestadapter/v2" className="ITextDllTests.TestClass" name="TestMethod2" />
+    </UnitTest>
+    <UnitTest name="TestMethod3" storage="ITextDllTests.dll" id="test-id-003">
+      <Execution id="abcd1234-1234-1234-1234-123456789003" />
+      <TestMethod codeBase="C:\Path\To\ITextDllTests.dll" adapterTypeName="executor://mstestadapter/v2" className="ITextDllTests.TestClass" name="TestMethod3" />
+    </UnitTest>
+  </TestDefinitions>
+</TestRun>
