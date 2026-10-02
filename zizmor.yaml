@@ -1,0 +1,7 @@
+# Actions here are pinned to version tags that dependabot keeps current,
+# so accept any ref instead of zizmor's default demand for commit hashes.
+rules:
+  unpinned-uses:
+    config:
+      policies:
+        "*": ref-pin

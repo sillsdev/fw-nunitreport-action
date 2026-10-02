@@ -97,7 +97,8 @@ steps:
     with:
       log-path: /path/to/nunitreporteroutput
       token: ${{ secrets.GITHUB_TOKEN }}
-      encoding: utf-16le # optional tuning to match the output filetype for the runner
+      # optional tuning to match the output filetype for the runner
+      encoding: utf-16le
 ```
 
 ### TRX Format (Visual Studio Test Results)
