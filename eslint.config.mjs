@@ -1,6 +1,6 @@
 import js from "@eslint/js";
 import github from "eslint-plugin-github";
-import jest from "eslint-plugin-jest";
+import vitest from "@vitest/eslint-plugin";
 import { defineConfig, globalIgnores } from "eslint/config";
 import globals from "globals";
 import tseslint from "typescript-eslint";
@@ -20,7 +20,7 @@ export default defineConfig([
       github.getFlatConfigs().recommended,
       // typescript-eslint must follow github so its eslint-recommended overrides win.
       ...tseslint.configs.recommended,
-      jest.configs["flat/recommended"],
+      vitest.configs.recommended,
     ],
     languageOptions: {
       ecmaVersion: 2023,
@@ -28,7 +28,6 @@ export default defineConfig([
       globals: {
         ...globals.node,
         ...globals.es2021,
-        ...globals.jest,
       },
       parserOptions: {
         project: ["./.github/linters/tsconfig.json"],
@@ -44,6 +43,9 @@ export default defineConfig([
       "eslint-comments/no-unused-disable": "off",
       "i18n-text/no-en": "off",
       "import/no-namespace": "off",
+      // The node resolver cannot map NodeNext ".js" specifiers to ".ts" sources
+      // or read exports maps; tsc (npm run typecheck) checks resolution instead.
+      "import/no-unresolved": "off",
       "no-console": "off",
       "no-unused-vars": "off",
       "prettier/prettier": "error",
@@ -84,7 +86,7 @@ export default defineConfig([
     },
   },
   {
-    files: ["eslint.config.mjs"],
+    files: ["eslint.config.mjs", "rollup.config.mjs", "vitest.config.mjs"],
     extends: [js.configs.recommended],
   },
 ]);

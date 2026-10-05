@@ -57,12 +57,12 @@ need to perform some initial setup steps before you can develop your action.
 
    > [!WARNING]
    >
-   > This step is important! It will run [`ncc`](https://github.com/vercel/ncc)
-   > to build the final JavaScript action code with all dependencies included.
-   > If you do not run this step, your action will not work correctly when it is
-   > used in a workflow. This step also includes the `--license` option for
-   > `ncc`, which will create a license file for all of the production node
-   > modules used in your project.
+   > This step is important! It will run [Rollup](https://rollupjs.org) to
+   > build the final JavaScript action code, an ES module, with all
+   > dependencies included. If you do not run this step, your action will not
+   > work correctly when it is used in a workflow. The build also writes
+   > `dist/licenses.txt`, a license file for all of the production node modules
+   > used in your project.
 
 1. Commit your changes
 1. Push them to your repository

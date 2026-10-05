@@ -2,22 +2,16 @@
  * Unit tests for the action's entrypoint, src/index.ts
  */
 
-import * as main from "../src/main";
+import { describe, expect, it, vi } from "vitest";
+import { run } from "../src/main.js";
 
-// Mock the GitHub client so importing src/main does not load @octokit/core
-jest.mock("@actions/github", () => ({
-  getOctokit: () => ({}),
-  context: {},
-}));
-
-// Mock the action's entrypoint
-const runMock = jest.spyOn(main, "run").mockImplementation();
+// Replace the action's main function so importing the entrypoint does nothing
+vi.mock("../src/main.js", () => ({ run: vi.fn() }));
 
 describe("index", () => {
   it("calls run when imported", async () => {
-    // eslint-disable-next-line @typescript-eslint/no-require-imports
-    require("../src/index");
+    await import("../src/index.js");
 
-    expect(runMock).toHaveBeenCalled();
+    expect(run).toHaveBeenCalled();
   });
 });

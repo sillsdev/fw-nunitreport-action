@@ -1,8 +1,8 @@
 import * as core from "@actions/core";
 import * as fs from "fs";
 import * as github from "@actions/github";
-import parseTestResults, { TestResults } from "./test-results-parser";
-import parseTrxResults from "./trx-parser";
+import parseTestResults, { TestResults } from "./test-results-parser.js";
+import parseTrxResults from "./trx-parser.js";
 
 /**
  * The main function for the action.
