@@ -93,7 +93,7 @@ hash.
 steps:
   - name: Report Results
     id: test-result-action
-    uses: sillsdev/fw-nunitreport-action@v1 # Commit with the `v1` tag
+    uses: sillsdev/fw-nunitreport-action@v3.0.0 # Commit with the `v3.0.0` tag
     with:
       log-path: /path/to/nunitreporteroutput
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -110,7 +110,7 @@ format is automatically detected based on the file extension or content.
 steps:
   - name: Report Results
     id: test-result-action
-    uses: sillsdev/fw-nunitreport-action@v1 # Commit with the `v1` tag
+    uses: sillsdev/fw-nunitreport-action@v3.0.0 # Commit with the `v3.0.0` tag
     with:
       log-path: /path/to/testresults.trx
       token: ${{ secrets.GITHUB_TOKEN }}
