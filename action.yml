@@ -20,5 +20,5 @@ inputs:
     description: "Log file encoding"
     default: "utf-16le"
 runs:
-  using: node20
+  using: node24
   main: dist/index.js
