@@ -1,0 +1,3 @@
+[codespell]
+# thirdParty is the option name rollup-plugin-license defines
+ignore-words-list = thirdparty
