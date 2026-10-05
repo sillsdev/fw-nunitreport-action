@@ -1,4 +1,5 @@
-import parseTrxResults from "../src/trx-parser";
+import { describe, expect, test } from "vitest";
+import parseTrxResults from "../src/trx-parser.js";
 import * as fs from "fs";
 
 describe("parse TRX test results", () => {

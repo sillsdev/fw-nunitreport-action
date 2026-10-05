@@ -8,7 +8,6 @@ on:
 
 permissions:
   contents: read
-  checks: write
 
 jobs:
   test-typescript:
@@ -19,6 +18,8 @@ jobs:
       - name: Checkout
         id: checkout
         uses: actions/checkout@v7
+        with:
+          persist-credentials: false
 
       - name: Setup Node.js
         id: setup-node
@@ -47,10 +48,16 @@ jobs:
     name: GitHub Actions Test
     runs-on: ubuntu-latest
 
+    permissions:
+      checks: write
+      contents: read
+
     steps:
       - name: Checkout
         id: checkout
         uses: actions/checkout@v7
+        with:
+          persist-credentials: false
 
       - name: Test Local Action
         id: test-action

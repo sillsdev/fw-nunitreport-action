@@ -1,4 +1,5 @@
-import parseTestResults, { FailureDetail } from "../src/test-results-parser";
+import { describe, expect, test } from "vitest";
+import parseTestResults, { FailureDetail } from "../src/test-results-parser.js";
 import * as fs from "fs";
 
 describe("parse test results", () => {

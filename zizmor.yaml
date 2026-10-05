@@ -1,0 +1,8 @@
+# First-party actions may use version tags, which dependabot keeps current;
+# everything else must be pinned to a commit hash.
+rules:
+  unpinned-uses:
+    config:
+      policies:
+        "actions/*": ref-pin
+        "github/*": ref-pin

@@ -1,24 +1,24 @@
-name: 'NUnitReport Github Integration'
-description: 'Parse the results of FieldWorks Unit Tests and report them in GitHub. Supports both NUnit text format and TRX (Visual Studio Test Results) format.'
-author: 'Jason Naylor'
+name: "NUnitReport Github Integration"
+description: "Parse the results of FieldWorks Unit Tests and report them in GitHub. Supports both NUnit text format and TRX (Visual Studio Test Results) format."
+author: "Jason Naylor"
 
 # Add your action's branding here. This will appear on the GitHub Marketplace.
 branding:
-  icon: 'check'
-  color: 'red'
+  icon: "check"
+  color: "red"
 
 # Define your inputs here.
 inputs:
   log-path:
     required: true
-    description: 'Path to test results file ( NUnitReport text format or .trx format)'
+    description: "Path to test results file ( NUnitReport text format or .trx format)"
   token:
     required: true
-    description: 'GitHub token sufficient to run checks'
+    description: "GitHub token sufficient to run checks"
   encoding:
     required: false
-    description: 'Log file encoding'
-    default: 'utf-16le'
+    description: "Log file encoding"
+    default: "utf-16le"
 runs:
-  using: node20
+  using: node24
   main: dist/index.js

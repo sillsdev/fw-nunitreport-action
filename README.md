@@ -13,7 +13,7 @@ need to perform some initial setup steps before you can develop your action.
 > [!NOTE]
 >
 > You'll need to have a reasonably modern version of
-> [Node.js](https://nodejs.org) handy (20.x or later should work!). If you are
+> [Node.js](https://nodejs.org) handy (24.x or later should work!). If you are
 > using a version manager like [`nodenv`](https://github.com/nodenv/nodenv) or
 > [`nvm`](https://github.com/nvm-sh/nvm), this template has a `.node-version`
 > file at the root of the repository that will be used to automatically switch
@@ -93,11 +93,12 @@ hash.
 steps:
   - name: Report Results
     id: test-result-action
-    uses: sillsdev/fw-nunitreport-action@v1 # Commit with the `v1` tag
+    uses: sillsdev/fw-nunitreport-action@v3.0.0 # Commit with the `v3.0.0` tag
     with:
       log-path: /path/to/nunitreporteroutput
       token: ${{ secrets.GITHUB_TOKEN }}
-      encoding: utf-16le # optional tuning to match the output filetype for the runner
+      # optional tuning to match the output filetype for the runner
+      encoding: utf-16le
 ```
 
 ### TRX Format (Visual Studio Test Results)
@@ -109,7 +110,7 @@ format is automatically detected based on the file extension or content.
 steps:
   - name: Report Results
     id: test-result-action
-    uses: sillsdev/fw-nunitreport-action@v1 # Commit with the `v1` tag
+    uses: sillsdev/fw-nunitreport-action@v3.0.0 # Commit with the `v3.0.0` tag
     with:
       log-path: /path/to/testresults.trx
       token: ${{ secrets.GITHUB_TOKEN }}

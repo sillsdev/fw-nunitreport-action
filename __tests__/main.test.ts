@@ -7,12 +7,21 @@
  */
 
 import * as core from "@actions/core";
-import * as main from "../src/main";
+import {
+  describe,
+  expect,
+  it,
+  beforeEach,
+  vi,
+  type MockInstance,
+} from "vitest";
+import * as main from "../src/main.js";
 
 // Mock the action's main function
-const runMock = jest.spyOn(main, "run");
+const runMock = vi.spyOn(main, "run");
+vi.mock("@actions/core", { spy: true });
 // mock all the github api calls
-jest.mock("@actions/github", () => ({
+vi.mock("@actions/github", () => ({
   getOctokit: () => {
     return {
       rest: {
@@ -30,16 +39,16 @@ jest.mock("@actions/github", () => ({
 }));
 
 // Mock the GitHub Actions core library
-let errorMock: jest.SpyInstance;
-let getInputMock: jest.SpyInstance;
-let setFailedMock: jest.SpyInstance;
+let errorMock: MockInstance;
+let getInputMock: MockInstance;
+let setFailedMock: MockInstance;
 
 describe("action", () => {
   beforeEach(() => {
-    jest.clearAllMocks();
-    errorMock = jest.spyOn(core, "error").mockImplementation();
-    getInputMock = jest.spyOn(core, "getInput").mockImplementation();
-    setFailedMock = jest.spyOn(core, "setFailed").mockImplementation();
+    vi.clearAllMocks();
+    errorMock = vi.spyOn(core, "error").mockImplementation(() => {});
+    getInputMock = vi.spyOn(core, "getInput").mockImplementation(() => "");
+    setFailedMock = vi.spyOn(core, "setFailed").mockImplementation(() => {});
   });
 
   it("sets a failed status", async () => {

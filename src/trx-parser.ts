@@ -1,5 +1,9 @@
 import { XMLParser } from "fast-xml-parser";
-import { TestResults, TestResult, FailureDetail } from "./test-results-parser";
+import {
+  TestResults,
+  TestResult,
+  FailureDetail,
+} from "./test-results-parser.js";
 
 interface TrxUnitTestResult {
   "@_testName": string;
