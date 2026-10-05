@@ -19,6 +19,7 @@ import * as main from "../src/main.js";
 
 // Mock the action's main function
 const runMock = vi.spyOn(main, "run");
+vi.mock("@actions/core", { spy: true });
 // mock all the github api calls
 vi.mock("@actions/github", () => ({
   getOctokit: () => {
