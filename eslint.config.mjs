@@ -86,7 +86,7 @@ export default defineConfig([
     },
   },
   {
-    files: ["eslint.config.mjs", "rollup.config.mjs", "vitest.config.mjs"],
+    files: ["eslint.config.mjs", "vitest.config.mjs"],
     extends: [js.configs.recommended],
   },
 ]);

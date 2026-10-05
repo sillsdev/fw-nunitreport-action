@@ -1,6 +1,0 @@
-[codespell]
-# super-linter's bundled template settings, which this file replaces.
-check-hidden =
-skip = */package-lock.json,*/go.mod,*/go.sum,*.log,.git
-# thirdParty is the option name rollup-plugin-license defines.
-ignore-words-list = thirdparty
