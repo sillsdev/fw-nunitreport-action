@@ -21,8 +21,6 @@ export async function run(): Promise<void> {
     });
     const testResultsText = fs.readFileSync(
       core.getInput("log-path"),
-      // BufferEncoding is global so the no-undef lint error is bogus
-      // eslint-disable-next-line no-undef
       core.getInput("encoding") as BufferEncoding,
     );
     const logPath = core.getInput("log-path");
