@@ -9,7 +9,6 @@ on:
 permissions:
   contents: read
   packages: read
-  statuses: write
 
 jobs:
   lint:
@@ -37,13 +36,14 @@ jobs:
 
       - name: Lint Codebase
         id: super-linter
-        uses: super-linter/super-linter/slim@v8
+        uses: super-linter/super-linter/slim@4ce20838b8ab83717e78138c5b3a1407148e0918 # v8.7.0
         env:
           ENABLE_GITHUB_PULL_REQUEST_SUMMARY_COMMENT: false
-          FILTER_REGEX_EXCLUDE: dist/**/*
+          FILTER_REGEX_EXCLUDE: (^|/)dist/
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           LINTER_RULES_PATH: .
           MARKDOWN_CONFIG_FILE: .github/linters/.markdown-lint.yml
+          MULTI_STATUS: false
           VALIDATE_ALL_CODEBASE: true
           VALIDATE_BIOME_FORMAT: false
           VALIDATE_BIOME_LINT: false
