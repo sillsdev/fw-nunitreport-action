@@ -19,6 +19,10 @@ updates:
     cooldown:
       default-days: 7
     groups:
+      vitest:
+        patterns:
+          - "vitest"
+          - "@vitest/*"
       npm-development:
         dependency-type: development
         update-types:
